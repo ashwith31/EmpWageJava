@@ -12,30 +12,34 @@ public class empWageBuilder {
 		final int WORKING_DAYS=20;
 		int salary=0;
 		int time=0;
+		int day=0;
+		int totalWorkingHrs=0;
+		while (day<WORKING_DAYS && totalWorkingHrs<100)
+		{
 		int empCheck =(int) Math.floor(Math.random() * 10) % 3;
 		
 		switch(empCheck) 
 		
 		{
 			case IS_PRESENT_FULL_TIME :
-			System.out.println("The Employee is present Full Time");
 			time=FULL_DAY_HR;
+			totalWorkingHrs=time+totalWorkingHrs;
 			break;
 		
 			case IS_PRESENT_HALF_TIME :
-			System.out.println("The Employee is present Part Time");
 			time=PART_TIME_HR;
+			totalWorkingHrs=time+totalWorkingHrs;
 			break;
 		
 			default:
 			break;
 			
 		}
-		for(int i=1;i<=WORKING_DAYS;i++)
-		{
-			salary=time*WAGE_PER_HR+salary;
-		}
-		System.out.println("Salary for a month = "+salary);
+		day++;
 	}
-
+		System.out.println("Total Working Hours = "+totalWorkingHrs);
+		System.out.println("Total Working Days ="+day);
+		salary=totalWorkingHrs*day*WAGE_PER_HR;
+		System.out.println("Salary for "+day+" days and "+totalWorkingHrs+" hours is =Rs-"+salary+" /-");
+	}
 }
