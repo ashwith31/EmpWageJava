@@ -1,15 +1,14 @@
 package Demo;
 
 public class empWageBuilder {
-
-	public static void main(String[] args) {
-
-		final int IS_PRESENT_FULL_TIME = 1;
-		final int IS_PRESENT_HALF_TIME = 2;
-		final int WAGE_PER_HR=20;
-		final int FULL_DAY_HR=8;
-		final int PART_TIME_HR=4;
-		final int WORKING_DAYS=20;
+final static int IS_PRESENT_FULL_TIME = 1;
+	final static int IS_PRESENT_HALF_TIME = 2;
+	final static int WAGE_PER_HR=20;
+	final static int FULL_DAY_HR=8;
+	final static int PART_TIME_HR=4;
+	final static int WORKING_DAYS=20;
+	public static void calculateWage()
+	{
 		int salary=0;
 		int time=0;
 		int day=0;
@@ -40,6 +39,11 @@ public class empWageBuilder {
 		System.out.println("Total Working Hours = "+totalWorkingHrs);
 		System.out.println("Total Working Days ="+day);
 		salary=totalWorkingHrs*day*WAGE_PER_HR;
-		System.out.println("Salary for "+day+" days and "+totalWorkingHrs+" hours is =Rs-"+salary+" /-");
+		System.out.println("Salary for "+day+" days and "+totalWorkingHrs+" hours is =Rs."+salary+" /-");
+	
 	}
+	public static void main(String[] args) {
+
+		calculateWage();		
+}
 }
