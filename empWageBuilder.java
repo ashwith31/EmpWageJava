@@ -7,43 +7,42 @@ final static int IS_PRESENT_FULL_TIME = 1;
 	final static int FULL_DAY_HR=8;
 	final static int PART_TIME_HR=4;
 	final static int WORKING_DAYS=20;
-	public static void calculateWage()
-	{
-		int salary=0;
-		int time=0;
+	public static void calculateWage(String company,int empRatePerHour,int numOfWorkinkingDays,int maxHoursPerMonth){
+		int empHrs=0;
+		int totalEmpHrs=0;
 		int day=0;
-		int totalWorkingHrs=0;
-		while (day<WORKING_DAYS && totalWorkingHrs<100)
+		int totalWorkingDays=0;
+		while (totalEmpHrs<=maxHoursPerMonth && totalWorkingDays<numOfWorkinkingDays)
 		{
+			totalWorkingDays++;
 		int empCheck =(int) Math.floor(Math.random() * 10) % 3;
 		
 		switch(empCheck) 
 		
 		{
 			case IS_PRESENT_FULL_TIME :
-			time=FULL_DAY_HR;
-			totalWorkingHrs=time+totalWorkingHrs;
+			empHrs=FULL_DAY_HR;
 			break;
 		
 			case IS_PRESENT_HALF_TIME :
-			time=PART_TIME_HR;
-			totalWorkingHrs=time+totalWorkingHrs;
+			empHrs=PART_TIME_HR;
 			break;
 		
 			default:
+				empHrs=0;
 			break;
 			
 		}
-		day++;
+		totalEmpHrs += empHrs;
+		System.out.println("Day :"+totalWorkingDays+ " Emp Hr:"+empHrs);
 	}
-		System.out.println("Total Working Hours = "+totalWorkingHrs);
-		System.out.println("Total Working Days ="+day);
-		salary=totalWorkingHrs*day*WAGE_PER_HR;
-		System.out.println("Salary for "+day+" days and "+totalWorkingHrs+" hours is =Rs."+salary+" /-");
+		int totalEmpWage=totalEmpHrs*empRatePerHour;
+		System.out.println("Total EmpWage for company "+company+" is : "+totalEmpWage);
 	
 	}
 	public static void main(String[] args) {
 
-		calculateWage();		
+		calculateWage("Abc",20,10,5);
+		
 }
 }
