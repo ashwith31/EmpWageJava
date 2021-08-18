@@ -3,16 +3,30 @@ package Demo;
 public class empWageBuilder {
 final static int IS_PRESENT_FULL_TIME = 1;
 	final static int IS_PRESENT_HALF_TIME = 2;
-	final static int WAGE_PER_HR=20;
-	final static int FULL_DAY_HR=8;
-	final static int PART_TIME_HR=4;
-	final static int WORKING_DAYS=20;
-	public static void calculateWage(String company,int empRatePerHour,int numOfWorkinkingDays,int maxHoursPerMonth){
+	public static String company;
+	public static int empRatePerHour;
+	public static int numOfWorkingDays;
+	public static int maxHoursPerMonth;
+	public static int totalEmpWage;
+	/*
+	 * Parameterized Constructor to set the values.
+	 * @parameters are the values which you want when initializing an object
+	 */
+	
+	public empWageBuilder(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth) {
+		this.company=company;
+		this.empRatePerHour=empRatePerHour;
+		this.numOfWorkingDays=numOfWorkingDays;
+		this.maxHoursPerMonth=maxHoursPerMonth;
+	}
+	/*
+	 * This method calculates the wage. 
+	 */
+	public static void calculateWage(){
 		int empHrs=0;
 		int totalEmpHrs=0;
-		int day=0;
 		int totalWorkingDays=0;
-		while (totalEmpHrs<=maxHoursPerMonth && totalWorkingDays<numOfWorkinkingDays)
+		while (totalEmpHrs<=maxHoursPerMonth && totalWorkingDays<numOfWorkingDays)
 		{
 			totalWorkingDays++;
 		int empCheck =(int) Math.floor(Math.random() * 10) % 3;
@@ -21,11 +35,11 @@ final static int IS_PRESENT_FULL_TIME = 1;
 		
 		{
 			case IS_PRESENT_FULL_TIME :
-			empHrs=FULL_DAY_HR;
+			empHrs=8;
 			break;
 		
 			case IS_PRESENT_HALF_TIME :
-			empHrs=PART_TIME_HR;
+			empHrs=4;
 			break;
 		
 			default:
@@ -36,13 +50,18 @@ final static int IS_PRESENT_FULL_TIME = 1;
 		totalEmpHrs += empHrs;
 		System.out.println("Day :"+totalWorkingDays+ " Emp Hr:"+empHrs);
 	}
-		int totalEmpWage=totalEmpHrs*empRatePerHour;
+		 totalEmpWage=totalEmpHrs*empRatePerHour;
 		System.out.println("Total EmpWage for company "+company+" is : "+totalEmpWage);
 	
 	}
 	public static void main(String[] args) {
 
-		calculateWage("Abc",20,10,5);
+		//creating object
+		empWageBuilder jio=new empWageBuilder("jio", 20, 3, 4);
+		jio.calculateWage();
+
+		empWageBuilder airtel=new empWageBuilder("airtel",30,3,5);
+		airtel.calculateWage();
 		
 }
 }
